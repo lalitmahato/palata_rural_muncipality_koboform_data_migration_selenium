@@ -1,1 +1,5 @@
 super_admin/*
+*.xml
+*.json
+*.jpg
+*.csv
