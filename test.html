@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Upload to XML</title>
+</head>
+<body>
+  <form id="myForm">
+    <label for="image">Upload Image:</label>
+    <input type="file" id="image" name="image" />
+
+    <button type="button" onclick="convertImageToXML()">Convert to XML</button>
+  </form>
+
+  <script>
+    function convertImageToXML() {
+      var form = document.getElementById("myForm");
+      var formData = new FormData(form);
+
+      var xmlStr = "<image>";
+      for (var pair of formData.entries()) {
+        if (pair[0] === "image") {
+          var file = pair[1];
+          xmlStr += "<filename>" + file.name + "</filename>";
+          xmlStr += "<filetype>" + file.type + "</filetype>";
+          // You can include additional image data in XML here
+        }
+      }
+      xmlStr += "</image>";
+
+      // Print XML to console (you can save or transmit it as needed)
+      console.log(xmlStr);
+    }
+  </script>
+</body>
+</html>
